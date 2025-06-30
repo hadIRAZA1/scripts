@@ -153,3 +153,73 @@
 {"asctime": "2025-06-30 15:31:20,470", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Completed all spelling bee answers.", "activity": "SpellingBee", "status": "completed"}
 {"asctime": "2025-06-30 15:31:20,470", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Spelling bee answers submitted.", "activity": "Main", "status": "answers_submitted"}
 {"asctime": "2025-06-30 15:31:20,470", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Closing browser...", "activity": "Main", "step": "closing_browser"}
+{"asctime": "2025-06-30 17:12:47,590", "levelname": "INFO", "name": "StudentSpellingBee", "message": "--- Starting Student Spelling Bee Automation ---", "activity": "Main", "status": "started"}
+{"asctime": "2025-06-30 17:12:49,580", "levelname": "INFO", "name": "StudentSpellingBee", "message": "--- Starting Student Spelling Bee Automation ---", "activity": "Main", "status": "started"}
+{"asctime": "2025-06-30 17:13:00,309", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Navigated to https://seeqlo-dev.vercel.app/login", "activity": "Main", "step": "navigation"}
+{"asctime": "2025-06-30 17:13:00,310", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Starting login process.", "activity": "Login", "step": "init"}
+{"asctime": "2025-06-30 17:13:00,963", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Email entered.", "activity": "Login", "step": "email_entered"}
+{"asctime": "2025-06-30 17:13:01,288", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Password entered.", "activity": "Login", "step": "password_entered"}
+{"asctime": "2025-06-30 17:13:01,467", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Login button clicked.", "activity": "Login", "step": "login_button_clicked"}
+{"asctime": "2025-06-30 17:13:06,295", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Successfully logged in.", "activity": "Login", "status": "success"}
+{"asctime": "2025-06-30 17:13:06,298", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Starting student spelling bee activity...", "activity": "Main", "status": "activity_start"}
+{"asctime": "2025-06-30 17:13:06,300", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for Classroom tab to be clickable...", "activity": "StartActivity", "step": "wait_classroom_tab"}
+{"asctime": "2025-06-30 17:13:06,407", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Classroom tab found, clicking...", "activity": "StartActivity", "step": "classroom_tab_found"}
+{"asctime": "2025-06-30 17:13:06,425", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked on Classroom tab.", "activity": "StartActivity", "step": "classroom_tab_clicked"}
+{"asctime": "2025-06-30 17:13:08,426", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Looking for Pending Activity section...", "activity": "StartActivity", "step": "pending_section"}
+{"asctime": "2025-06-30 17:13:08,524", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Scrolled to Pending Activities section.", "activity": "StartActivity", "step": "pending_section_scrolled"}
+{"asctime": "2025-06-30 17:13:09,528", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Looking for Spelling Bee activity in Pending Activities...", "activity": "StartActivity", "step": "find_spellingbee"}
+{"asctime": "2025-06-30 17:13:10,331", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Start Activity for Spelling Bee.", "activity": "StartActivity", "step": "start_clicked"}
+{"asctime": "2025-06-30 17:13:10,334", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Activity started.", "activity": "StartActivity", "status": "started"}
+{"asctime": "2025-06-30 17:13:12,989", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Navigated to https://seeqlo-dev.vercel.app/login", "activity": "Main", "step": "navigation"}
+{"asctime": "2025-06-30 17:13:13,001", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Starting login process.", "activity": "Login", "step": "init"}
+{"asctime": "2025-06-30 17:13:13,340", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Student activity started successfully", "activity": "Main", "status": "activity_started"}
+{"asctime": "2025-06-30 17:13:13,349", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Attempting word 1 of 3...", "activity": "SpellingBee", "step": "word_1"}
+{"asctime": "2025-06-30 17:13:13,587", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Entered 'a' in the input box.", "activity": "SpellingBee", "step": "word_1_entered"}
+{"asctime": "2025-06-30 17:13:13,679", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Submit Answer.", "activity": "SpellingBee", "step": "word_1_submitted"}
+{"asctime": "2025-06-30 17:13:13,684", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for Next Word button...", "activity": "SpellingBee", "step": "word_1_next"}
+{"asctime": "2025-06-30 17:13:13,833", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Next Word.", "activity": "SpellingBee", "step": "word_1_next_clicked"}
+{"asctime": "2025-06-30 17:13:15,839", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Attempting word 2 of 3...", "activity": "SpellingBee", "step": "word_2"}
+{"asctime": "2025-06-30 17:13:16,103", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Entered 'b' in the input box.", "activity": "SpellingBee", "step": "word_2_entered"}
+{"asctime": "2025-06-30 17:13:16,578", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Submit Answer.", "activity": "SpellingBee", "step": "word_2_submitted"}
+{"asctime": "2025-06-30 17:13:16,584", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for Next Word button...", "activity": "SpellingBee", "step": "word_2_next"}
+{"asctime": "2025-06-30 17:13:16,686", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Next Word.", "activity": "SpellingBee", "step": "word_2_next_clicked"}
+{"asctime": "2025-06-30 17:13:16,947", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Email entered.", "activity": "Login", "step": "email_entered"}
+{"asctime": "2025-06-30 17:13:17,080", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Password entered.", "activity": "Login", "step": "password_entered"}
+{"asctime": "2025-06-30 17:13:17,214", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Login button clicked.", "activity": "Login", "step": "login_button_clicked"}
+{"asctime": "2025-06-30 17:13:18,688", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Attempting word 3 of 3...", "activity": "SpellingBee", "step": "word_3"}
+{"asctime": "2025-06-30 17:13:18,978", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Entered 'c' in the input box.", "activity": "SpellingBee", "step": "word_3_entered"}
+{"asctime": "2025-06-30 17:13:19,118", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Submit Answer.", "activity": "SpellingBee", "step": "word_3_submitted"}
+{"asctime": "2025-06-30 17:13:20,121", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for final Next Word button...", "activity": "SpellingBee", "step": "final_next"}
+{"asctime": "2025-06-30 17:13:20,390", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked final Next Word. Waiting 5 seconds before finishing.", "activity": "SpellingBee", "step": "final_next_clicked"}
+{"asctime": "2025-06-30 17:13:22,478", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Successfully logged in.", "activity": "Login", "status": "success"}
+{"asctime": "2025-06-30 17:13:22,479", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Starting student spelling bee activity...", "activity": "Main", "status": "activity_start"}
+{"asctime": "2025-06-30 17:13:22,481", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for Classroom tab to be clickable...", "activity": "StartActivity", "step": "wait_classroom_tab"}
+{"asctime": "2025-06-30 17:13:22,578", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Classroom tab found, clicking...", "activity": "StartActivity", "step": "classroom_tab_found"}
+{"asctime": "2025-06-30 17:13:22,628", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked on Classroom tab.", "activity": "StartActivity", "step": "classroom_tab_clicked"}
+{"asctime": "2025-06-30 17:13:24,634", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Looking for Pending Activity section...", "activity": "StartActivity", "step": "pending_section"}
+{"asctime": "2025-06-30 17:13:24,772", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Scrolled to Pending Activities section.", "activity": "StartActivity", "step": "pending_section_scrolled"}
+{"asctime": "2025-06-30 17:13:25,399", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Completed all spelling bee answers.", "activity": "SpellingBee", "status": "completed"}
+{"asctime": "2025-06-30 17:13:25,401", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Spelling bee answers submitted.", "activity": "Main", "status": "answers_submitted"}
+{"asctime": "2025-06-30 17:13:25,403", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Closing browser...", "activity": "Main", "step": "closing_browser"}
+{"asctime": "2025-06-30 17:13:25,779", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Looking for Spelling Bee activity in Pending Activities...", "activity": "StartActivity", "step": "find_spellingbee"}
+{"asctime": "2025-06-30 17:13:26,588", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Start Activity for Spelling Bee.", "activity": "StartActivity", "step": "start_clicked"}
+{"asctime": "2025-06-30 17:13:26,590", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Activity started.", "activity": "StartActivity", "status": "started"}
+{"asctime": "2025-06-30 17:13:29,593", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Student activity started successfully", "activity": "Main", "status": "activity_started"}
+{"asctime": "2025-06-30 17:13:29,597", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Attempting word 1 of 3...", "activity": "SpellingBee", "step": "word_1"}
+{"asctime": "2025-06-30 17:13:29,811", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Entered 'a' in the input box.", "activity": "SpellingBee", "step": "word_1_entered"}
+{"asctime": "2025-06-30 17:13:29,873", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Submit Answer.", "activity": "SpellingBee", "step": "word_1_submitted"}
+{"asctime": "2025-06-30 17:13:29,876", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for Next Word button...", "activity": "SpellingBee", "step": "word_1_next"}
+{"asctime": "2025-06-30 17:13:29,934", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Next Word.", "activity": "SpellingBee", "step": "word_1_next_clicked"}
+{"asctime": "2025-06-30 17:13:31,937", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Attempting word 2 of 3...", "activity": "SpellingBee", "step": "word_2"}
+{"asctime": "2025-06-30 17:13:32,046", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Entered 'b' in the input box.", "activity": "SpellingBee", "step": "word_2_entered"}
+{"asctime": "2025-06-30 17:13:32,086", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Submit Answer.", "activity": "SpellingBee", "step": "word_2_submitted"}
+{"asctime": "2025-06-30 17:13:32,087", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for Next Word button...", "activity": "SpellingBee", "step": "word_2_next"}
+{"asctime": "2025-06-30 17:13:32,128", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Next Word.", "activity": "SpellingBee", "step": "word_2_next_clicked"}
+{"asctime": "2025-06-30 17:13:34,131", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Attempting word 3 of 3...", "activity": "SpellingBee", "step": "word_3"}
+{"asctime": "2025-06-30 17:13:34,293", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Entered 'c' in the input box.", "activity": "SpellingBee", "step": "word_3_entered"}
+{"asctime": "2025-06-30 17:13:34,359", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked Submit Answer.", "activity": "SpellingBee", "step": "word_3_submitted"}
+{"asctime": "2025-06-30 17:13:35,362", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Waiting for final Next Word button...", "activity": "SpellingBee", "step": "final_next"}
+{"asctime": "2025-06-30 17:13:35,477", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Clicked final Next Word. Waiting 5 seconds before finishing.", "activity": "SpellingBee", "step": "final_next_clicked"}
+{"asctime": "2025-06-30 17:13:40,480", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Completed all spelling bee answers.", "activity": "SpellingBee", "status": "completed"}
+{"asctime": "2025-06-30 17:13:40,481", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Spelling bee answers submitted.", "activity": "Main", "status": "answers_submitted"}
+{"asctime": "2025-06-30 17:13:40,483", "levelname": "INFO", "name": "StudentSpellingBee", "message": "Closing browser...", "activity": "Main", "step": "closing_browser"}

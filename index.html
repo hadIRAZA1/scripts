@@ -375,6 +375,7 @@
             <span class="main-heading">Selenium Bot Automation Logs</span>
         </div>
         <div class="actions-bar">
+            <button class="refresh-button" onclick="runAllScripts()"><i class="fa-solid fa-bolt"></i> Run All Activities</button>
             <button class="refresh-button" onclick="runScript('student_spellingbee')"><i class="fa-solid fa-user-graduate"></i> Run Student Spelling Bee</button>
             <button class="refresh-button" onclick="runScript('teacher_spellingbee')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Spelling Bee</button>
             <button class="refresh-button" onclick="runScript('student_activepassive')"><i class="fa-solid fa-user-graduate"></i> Run Student Active/Passive</button>
@@ -569,6 +570,8 @@
                 card.className = `script-summary-card status-${summary.lastRunStatus}`;
                 
                 card.innerHTML = `
+
+                
                     <div class="script-title">${scriptName}</div>
                     <div class="script-stats">
                         <span>Total Runs: <strong>${summary.totalRuns}</strong></span>
@@ -660,6 +663,28 @@
                 .then(data => {
                     setTimeout(fetchLogs, 2000);
                 })
+        }
+
+        function runAllScripts() {
+            const scriptTypes = [
+                'student_spellingbee',
+                'teacher_spellingbee',
+                'student_activepassive',
+                'teacher_activepassive',
+                'student_currency',
+                'teacher_currency',
+                'student_imagedescribe',
+                'teacher_imagedescribe',
+                'student_readrespond',
+                'teacher_readrespond',
+                'student_science',
+                'teacher_science',
+                'student_storygen',
+                'teacher_storygen'
+            ];
+            for (const type of scriptTypes) {
+                runScript(type);
+            }
         }
 
         async function clearLogHistory() {
