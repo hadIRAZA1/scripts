@@ -1,8 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import subprocess
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/run-script')
 def run_script():
@@ -22,6 +24,7 @@ def run_script():
         'teacher_science': 'science.py',
         'student_storygen': 'storygenstd.py',
         'teacher_storygen': 'storygen.py',
+        'assignment_combinations': 'assignmentT.py',
     }
     script = script_map.get(script_type)
     if not script:
@@ -39,6 +42,14 @@ def clear_logs():
         return jsonify({'message': 'Logs cleared successfully.'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/')
+def serve_index():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/automation_logs.json')
+def serve_logs():
+    return send_from_directory('.', 'automation_logs.json')
 
 if __name__ == '__main__':
     app.run(port=8000)
