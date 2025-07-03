@@ -8,82 +8,152 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary: #6c47ff;
-            --primary-dark: #3d1eaa;
-            --primary-light: #f3f0ff;
-            --accent: #00e0d3;
-            --accent-dark: #00bfae;
-            --danger: #ff4d6d;
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --primary-light: #ede9fe;
+            --accent: #06b6d4;
+            --accent-dark: #0e7490;
+            --danger: #ef4444;
             --danger-dark: #b91c1c;
-            --success: #00c48c;
+            --success: #22c55e;
             --success-bg: #e6fff6;
-            --bg: #f6f3ff;
+            --bg: #f3f4f6;
             --card: #fff;
-            --text: #1a1333;
-            --muted: #6c47ff;
-            --border: #e0d7ff;
-            --shadow: 0 8px 32px 0 rgba(108, 71, 255, 0.10);
+            --text: #1e1b4b;
+            --muted: #7c3aed;
+            --border: #e0e7ff;
+            --shadow: 0 8px 32px 0 rgba(124, 58, 237, 0.10);
+            --sidebar: #fff;
+            --sidebar-shadow: 0 2px 24px 0 rgba(124, 58, 237, 0.10);
         }
         html, body {
             height: 100%;
         }
         body {
             min-height: 100vh;
-            background: linear-gradient(120deg, var(--primary-light) 0%, #e0e7ff 100%);
-            font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, var(--primary-light) 0%, #f0fdfa 100%);
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
             color: var(--text);
             margin: 0;
             display: flex;
-            flex-direction: column;
         }
-        .container {
-            width: 100vw;
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar);
+            color: var(--primary-dark);
             min-height: 100vh;
-            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 36px 0 0 0;
+            box-shadow: var(--sidebar-shadow);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+        }
+        .sidebar h1 {
+            font-size: 1.7rem;
+            font-weight: 900;
+            margin-bottom: 36px;
+            letter-spacing: -1px;
+            width: 100%;
+            text-align: center;
+            color: var(--primary);
+        }
+        .sidebar-section {
+            width: 100%;
+            margin-bottom: 18px;
+        }
+        .sidebar-section-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--muted);
+            margin: 18px 0 8px 32px;
+            letter-spacing: 0.5px;
+        }
+        .sidebar-btn {
+            background: none;
+            border: none;
+            color: var(--primary-dark);
+            font-size: 1.08rem;
+            font-weight: 600;
+            margin: 2px 0;
+            padding: 12px 32px;
+            border-radius: 0 18px 18px 0;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sidebar-btn.active, .sidebar-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
             padding: 0 0 40px 0;
             background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         .header {
             display: flex;
             align-items: center;
             gap: 18px;
             margin-bottom: 32px;
-            justify-content: center;
-            padding-top: 40px;
+            justify-content: flex-start;
+            padding: 0 40px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            color: #fff;
+            border-radius: 0 0 32px 32px;
+            box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.08);
+            min-height: 110px;
         }
         .header-icon {
-            font-size: 3.2rem;
-            color: var(--primary);
+            font-size: 2.5rem;
+            color: #fff;
         }
         .main-heading {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             letter-spacing: -1.5px;
-            color: var(--primary);
-            font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
+            color: #fff;
         }
         .actions-bar {
             display: flex;
             flex-wrap: wrap;
             gap: 18px;
-            justify-content: center;
+            justify-content: flex-start;
             margin-bottom: 32px;
+            padding: 0 40px;
         }
         .refresh-button, .clear-button {
             background: var(--primary);
             color: #fff;
             font-weight: 700;
             border: none;
-            border-radius: 16px;
-            padding: 18px 32px;
-            font-size: 1.1rem;
+            border-radius: 14px;
+            padding: 16px 28px;
+            font-size: 1.08rem;
             cursor: pointer;
-            box-shadow: 0 4px 16px 0 rgba(108, 71, 255, 0.10);
+            box-shadow: 0 4px 16px 0 rgba(124, 58, 237, 0.10);
             transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
             outline: none;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .refresh-button.special {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.12rem;
+            border: 2px solid var(--primary);
         }
         .refresh-button:hover, .clear-button:hover {
             background: var(--primary-dark);
@@ -91,170 +161,66 @@
         }
         .clear-button {
             background: var(--danger);
+            margin-left: 8px;
         }
         .clear-button:hover {
             background: var(--danger-dark);
         }
-        .last-run-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 10px;
-            padding: 10px 28px;
-            margin: 0 auto 32px auto;
-            box-shadow: 0 2px 8px 0 rgba(108, 71, 255, 0.10);
-            text-align: center;
-        }
-        .summary-grid {
+        .dashboard-cards {
             display: flex;
+            flex-wrap: wrap;
             gap: 32px;
-            margin-bottom: 32px;
-            justify-content: center;
+            margin: 0 40px 32px 40px;
         }
-        .summary-card {
-            flex: 1 1 0;
+        .dashboard-card {
             background: var(--card);
             border-radius: 18px;
-            box-shadow: 0 4px 24px 0 rgba(108, 71, 255, 0.08);
+            box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.08);
             padding: 32px 24px 24px 24px;
+            min-width: 220px;
+            border: 2.5px solid var(--border);
+            flex: 1 1 220px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            min-width: 220px;
-            border: 2.5px solid var(--border);
-            position: relative;
         }
-        .summary-card .fa {
+        .dashboard-card .fa {
             font-size: 2.1rem;
             margin-bottom: 14px;
         }
-        .summary-label {
+        .dashboard-label {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--muted);
             margin-bottom: 8px;
         }
-        .summary-value {
+        .dashboard-value {
             font-size: 2.5rem;
             font-weight: 900;
             margin-bottom: 0;
         }
-        .blue-card { border-left: 8px solid var(--primary); }
-        .green-card { border-left: 8px solid var(--success); }
-        .red-card { border-left: 8px solid var(--danger); }
-        .summary-card.blue-card .fa { color: var(--primary); }
-        .summary-card.green-card .fa { color: var(--success); }
-        .summary-card.red-card .fa { color: var(--danger); }
-        .script-summary-list {
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            margin-bottom: 40px;
-        }
-        .script-summary-card {
+        .logs-section {
             background: var(--card);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 28px 22px;
-            box-shadow: 0 2px 8px 0 rgba(108, 71, 255, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 22px;
-            transition: box-shadow 0.2s, transform 0.2s;
-            position: relative;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.08);
+            margin: 0 40px;
+            padding: 32px 24px;
         }
-        .script-summary-card:hover {
-            box-shadow: 0 8px 24px 0 rgba(108, 71, 255, 0.13);
-            transform: translateY(-2px) scale(1.01);
-        }
-        .script-title {
-            font-size: 1.25rem;
-            font-weight: 800;
+        .logs-header {
+            font-size: 1.4rem;
+            font-weight: 700;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
-        }
-        .script-title .fa {
-            font-size: 1.2rem;
-        }
-        .script-stats {
-            display: flex;
-            gap: 22px;
-            font-size: 1.08rem;
-            color: var(--muted);
-        }
-        .script-stats span strong {
-            color: var(--text);
-        }
-        .script-stats .success-count { color: var(--success); font-weight: 800; }
-        .script-stats .failure-count { color: var(--danger); font-weight: 800; }
-        .view-details-button {
-            background: var(--primary);
-            color: #fff;
-            font-weight: 800;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.08rem;
-            transition: background 0.2s;
-        }
-        .view-details-button:hover {
-            background: var(--primary-dark);
-        }
-        .individual-logs-section {
-            display: none;
-            margin-top: 50px;
-            padding-top: 28px;
-            border-top: 2px dashed var(--border);
-            animation: fadeIn 0.8s ease-out;
-        }
-        .individual-logs-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 32px;
-        }
-        .individual-logs-header h2 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        .back-button {
-            background: var(--muted);
-            color: #fff;
-            font-weight: 800;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.08rem;
-            transition: background 0.2s;
-        }
-        .back-button:hover {
-            background: #334155;
-        }
-        .logs-container {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
+            margin-bottom: 18px;
         }
         .log-entry {
             background: var(--bg);
             border: 2px solid var(--border);
             border-radius: 14px;
             padding: 22px 18px;
-            box-shadow: 0 2px 8px 0 rgba(108, 71, 255, 0.04);
-            position: relative;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px 0 rgba(124, 58, 237, 0.04);
         }
-        .log-entry:hover {
-            box-shadow: 0 6px 18px 0 rgba(108, 71, 255, 0.10);
-        }
+        .log-entry:last-child { margin-bottom: 0; }
         .log-header-row {
             display: flex;
             flex-wrap: wrap;
@@ -272,7 +238,7 @@
             border-radius: 6px;
             font-size: 0.98rem;
         }
-        .info .log-level-text { background: var(--success-bg); color: var(--success); }
+        .info .log-level-text { background: #e6fff6; color: var(--success); }
         .warning .log-level-text { background: #fef9c3; color: #fbbf24; }
         .error .log-level-text { background: #fdf2f8; color: var(--danger); }
         .critical .log-level-text { background: #ede9fe; color: #6d28d9; }
@@ -289,63 +255,6 @@
             color: var(--text);
             margin-bottom: 10px;
         }
-        .log-detail-row {
-            font-size: 1.08rem;
-            color: var(--muted);
-            margin-bottom: 6px;
-        }
-        .log-detail-row .font-semibold { font-weight: 800; color: var(--text); }
-        .log-status-text.success { color: var(--success); font-weight: 800; }
-        .log-status-text.failure { color: var(--danger); font-weight: 800; }
-        .log-status-text { text-transform: capitalize; }
-        .error-message {
-            color: var(--danger);
-            font-weight: 800;
-            margin-top: 12px;
-            padding: 12px;
-            background: #fdf2f8;
-            border: 2px solid #fca5a5;
-            border-radius: 10px;
-        }
-        .warning-message {
-            color: #fbbf24;
-            font-weight: 800;
-            margin-top: 12px;
-            padding: 12px;
-            background: #fef9c3;
-            border: 2px solid #fcd34d;
-            border-radius: 10px;
-        }
-        .screenshot-link {
-            margin-top: 12px;
-            font-size: 1.08rem;
-            display: block;
-        }
-        .screenshot-link a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 800;
-            transition: color 0.2s;
-        }
-        .screenshot-link a:hover {
-            text-decoration: underline;
-            color: var(--primary-dark);
-        }
-        pre {
-            background: #f1f5f9;
-            padding: 1.2rem;
-            border-radius: 12px;
-            overflow-x: auto;
-            font-family: 'Fira Code', 'Poppins', 'Courier New', Courier, monospace;
-            font-size: 1.08rem;
-            color: var(--text);
-            margin-top: 1rem;
-            border: 2px solid #dbeafe;
-        }
-        .separator {
-            border-bottom: 2px dashed var(--border);
-            margin: 40px 0;
-        }
         .footer {
             text-align: center;
             color: var(--muted);
@@ -356,82 +265,113 @@
             background: var(--bg);
             border-radius: 0 0 18px 18px;
         }
-        @media (max-width: 1100px) {
-            .summary-grid { flex-direction: column; gap: 18px; }
-            .container { padding: 0 2vw; }
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .main-content { padding: 0; margin-left: 0; }
+            .dashboard-cards, .logs-section { margin: 0 10px; }
+            .header, .actions-bar { padding: 0 10px; }
         }
-        @media (max-width: 700px) {
-            .container { padding: 0 1vw; }
-            .summary-grid { flex-direction: column; gap: 12px; }
-            .actions-bar { flex-direction: column; gap: 10px; }
-            .main-heading { font-size: 1.5rem; }
+        @media (max-width: 600px) {
+            .header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px 10px 0 10px; }
+            .main-heading { font-size: 1.2rem; }
+            .dashboard-cards { flex-direction: column; gap: 12px; }
+            .logs-section { padding: 16px 8px; }
+        }
+        .clear-btn-inline {
+            background: var(--danger);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .clear-btn-inline:hover {
+            background: var(--danger-dark);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <span class="header-icon"><i class="fa-solid fa-robot"></i></span>
-            <span class="main-heading">Selenium Bot Automation Logs</span>
+    <div class="sidebar">
+        <h1><i class="fa-solid fa-robot"></i> Bot Dashboard</h1>
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Student Side</div>
+            <button class="sidebar-btn" onclick="showSection('student-activities')"><i class="fa-solid fa-user-graduate"></i> Student Activities</button>
+            <button class="sidebar-btn" onclick="showSection('student-assignment')"><i class="fa-solid fa-file-alt"></i> Student Assignment</button>
         </div>
-        <div class="actions-bar">
-            <button class="refresh-button" onclick="runScript('student_spellingbee')"><i class="fa-solid fa-user-graduate"></i> Run Student Spelling Bee</button>
-            <button class="refresh-button" onclick="runScript('teacher_spellingbee')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Spelling Bee</button>
-            <button class="refresh-button" onclick="runScript('student_activepassive')"><i class="fa-solid fa-user-graduate"></i> Run Student Active/Passive</button>
-            <button class="refresh-button" onclick="runScript('teacher_activepassive')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Active/Passive</button>
-            <button class="refresh-button" onclick="runScript('student_currency')"><i class="fa-solid fa-user-graduate"></i> Run Student Currency</button>
-            <button class="refresh-button" onclick="runScript('teacher_currency')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Currency</button>
-            <button class="refresh-button" onclick="runScript('student_imagedescribe')"><i class="fa-solid fa-user-graduate"></i> Run Student Image Describe</button>
-            <button class="refresh-button" onclick="runScript('teacher_imagedescribe')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Image Describe</button>
-            <button class="refresh-button" onclick="runScript('student_readrespond')"><i class="fa-solid fa-user-graduate"></i> Run Student Read & Respond</button>
-            <button class="refresh-button" onclick="runScript('teacher_readrespond')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Read & Respond</button>
-            <button class="refresh-button" onclick="runScript('student_science')"><i class="fa-solid fa-user-graduate"></i> Run Student Science Lab</button>
-            <button class="refresh-button" onclick="runScript('teacher_science')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Science Lab</button>
-            <button class="refresh-button" onclick="runScript('student_storygen')"><i class="fa-solid fa-user-graduate"></i> Run Student Story Generation</button>
-            <button class="refresh-button" onclick="runScript('teacher_storygen')"><i class="fa-solid fa-chalkboard-teacher"></i> Run Teacher Story Generation</button>
-            <button class="refresh-button" onclick="runScript('assignment_combinations')">
-                <i class="fa-solid fa-layer-group"></i> Run Assignment Combinations
-            </button>
-            <button class="clear-button" onclick="clearLogHistory()"><i class="fa-solid fa-trash"></i> Clear Log History</button>
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Teacher Side</div>
+            <button class="sidebar-btn" onclick="showSection('teacher-activities')"><i class="fa-solid fa-chalkboard-teacher"></i> Teacher Activities</button>
+            <button class="sidebar-btn" onclick="showSection('teacher-assignment')"><i class="fa-solid fa-file-alt"></i> Teacher Assignment</button>
         </div>
-        <div class="actions-bar" style="margin-bottom: 18px;">
-            <button class="refresh-button" onclick="runAllScripts()"><i class="fa-solid fa-bolt"></i> Run All Activities</button>
-        </div>
-        <div id="loading-indicator" class="loading-indicator">Loading automation run summaries...</div>
-        <div class="last-run-badge">
-            <i class="fa-solid fa-clock"></i> Last script run: <span id="last-run-timestamp">N/A</span>
-        </div>
-        <div class="summary-grid">
-            <div class="summary-card blue-card">
-                <i class="fa-solid fa-list-check"></i>
-                <div class="summary-label">Total Automation Runs</div>
-                <div class="summary-value" id="total-logs">0</div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <div class="header">
+                <span class="header-icon"><i class="fa-solid fa-robot"></i></span>
+                <span class="main-heading">Selenium Bot Automation Logs</span>
             </div>
-            <div class="summary-card green-card">
-                <i class="fa-solid fa-circle-check"></i>
-                <div class="summary-label">Successful Activities</div>
-                <div class="summary-value" id="successful-activities">0</div>
+            <div id="student-activities" class="actions-bar" style="display:none;">
+                <button class="refresh-button" onclick="runScript('student_activepassive')">Run Student Active/Passive</button><button class="clear-btn-inline" onclick="clearLogHistory('student_activepassive')">Clear</button>
+                <button class="refresh-button" onclick="runScript('student_currency')">Run Student Currency</button><button class="clear-btn-inline" onclick="clearLogHistory('student_currency')">Clear</button>
+                <button class="refresh-button" onclick="runScript('student_imagedescribe')">Run Student Image Describe</button><button class="clear-btn-inline" onclick="clearLogHistory('student_imagedescribe')">Clear</button>
+                <button class="refresh-button" onclick="runScript('student_readrespond')">Run Student Read & Respond</button><button class="clear-btn-inline" onclick="clearLogHistory('student_readrespond')">Clear</button>
+                <button class="refresh-button" onclick="runScript('student_spellingbee')">Run Student Spelling Bee</button><button class="clear-btn-inline" onclick="clearLogHistory('student_spellingbee')">Clear</button>
+                <button class="refresh-button" onclick="runScript('student_storygen')">Run Student Story Generation</button><button class="clear-btn-inline" onclick="clearLogHistory('student_storygen')">Clear</button>
             </div>
-            <div class="summary-card red-card">
-                <i class="fa-solid fa-circle-xmark"></i>
-                <div class="summary-label">Failed Activities</div>
-                <div class="summary-value" id="failed-activities">0</div>
+            <div id="teacher-activities" class="actions-bar" style="display:none;">
+                <button class="refresh-button" onclick="runScript('teacher_activepassive')">Run Teacher Active/Passive</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_activepassive')">Clear</button>
+                <button class="refresh-button" onclick="runScript('teacher_currency')">Run Teacher Currency</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_currency')">Clear</button>
+                <button class="refresh-button" onclick="runScript('teacher_imagedescribe')">Run Teacher Image Describe</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_imagedescribe')">Clear</button>
+                <button class="refresh-button" onclick="runScript('teacher_readrespond')">Run Teacher Read & Respond</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_readrespond')">Clear</button>
+                <button class="refresh-button" onclick="runScript('teacher_spellingbee')">Run Teacher Spelling Bee</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_spellingbee')">Clear</button>
+                <button class="refresh-button" onclick="runScript('teacher_storygen')">Run Teacher Story Generation</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_storygen')">Clear</button>
             </div>
-        </div>
-        <div id="script-summaries-section">
-            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 18px; text-align: center; letter-spacing: -0.5px;">Recent Automation Runs</h2>
-            <div id="script-summary-list" class="script-summary-list"></div>
-        </div>
-        <div id="individual-logs-section" class="individual-logs-section">
-            <div class="individual-logs-header">
-                <h2 id="detailed-log-header">Detailed Logs for: Script Name</h2>
-                <button class="back-button" onclick="showScriptSummaries()"><i class="fa-solid fa-arrow-left"></i> Back to All Runs</button>
+            <div id="student-assignment" class="actions-bar" style="display:none;">
+                <button class="refresh-button special" onclick="runScript('student_assignmentstd')">Run Student Assignment Side</button><button class="clear-btn-inline" onclick="clearLogHistory('student_assignmentstd')">Clear</button>
             </div>
-            <div id="logs-container" class="logs-container"></div>
-        </div>
-        <div class="footer">
-            <p>Last updated: <span id="last-updated">N/A</span></p>
-            <p>Logs are generated by Selenium automation scripts.</p>
+            <div id="teacher-assignment" class="actions-bar" style="display:none;">
+                <button class="refresh-button special" onclick="runScript('assignment_combinations')">Run Teacher Assignment Side</button><button class="clear-btn-inline" onclick="clearLogHistory('assignment_combinations')">Clear</button>
+            </div>
+            <div id="loading-indicator" class="loading-indicator">Loading automation run summaries...</div>
+            <div class="last-run-badge">
+                <i class="fa-solid fa-clock"></i> Last script run: <span id="last-run-timestamp">N/A</span>
+            </div>
+            <div class="summary-grid">
+                <div class="summary-card blue-card">
+                    <i class="fa-solid fa-list-check"></i>
+                    <div class="summary-label">Total Automation Runs</div>
+                    <div class="summary-value" id="total-logs">0</div>
+                </div>
+                <div class="summary-card green-card">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div class="summary-label">Successful Activities</div>
+                    <div class="summary-value" id="successful-activities">0</div>
+                </div>
+                <div class="summary-card red-card">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <div class="summary-label">Failed Activities</div>
+                    <div class="summary-value" id="failed-activities">0</div>
+                </div>
+            </div>
+            <div id="script-summaries-section">
+                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 18px; text-align: center; letter-spacing: -0.5px;">Recent Automation Runs</h2>
+                <div id="script-summary-list" class="script-summary-list"></div>
+            </div>
+            <div id="individual-logs-section" class="individual-logs-section">
+                <div class="individual-logs-header">
+                    <h2 id="detailed-log-header">Detailed Logs for: Script Name</h2>
+                    <button class="back-button" onclick="showScriptSummaries()"><i class="fa-solid fa-arrow-left"></i> Back to All Runs</button>
+                </div>
+                <div id="logs-container" class="logs-container"></div>
+            </div>
+            <div class="footer">
+                <p>Last updated: <span id="last-updated">N/A</span></p>
+                <p>Logs are generated by Selenium automation scripts.</p>
+            </div>
         </div>
     </div>
     <script>
@@ -572,14 +512,11 @@
                 card.className = `script-summary-card status-${summary.lastRunStatus}`;
                 
                 card.innerHTML = `
-
-                
                     <div class="script-title">${scriptName}</div>
                     <div class="script-stats">
                         <span>Total Runs: <strong>${summary.totalRuns}</strong></span>
                         <span class="success-count">Successes: <strong>${summary.successes}</strong></span>
                         <span class="failure-count">Failures: <strong>${summary.failures}</strong></span>
-                      
                     </div>
                     <button class="view-details-button" onclick="showDetailedLogs('${scriptName.replace(/'/g, "\\'")}')">View Details</button>
                 `;
@@ -589,7 +526,6 @@
             scriptSummariesSection.style.display = 'block';
             individualLogsSection.style.display = 'none';
         }
-
 
         function showDetailedLogs(scriptName) {
             detailedLogHeader.textContent = `Detailed Logs for: ${scriptName}`;
@@ -689,18 +625,27 @@
             }
         }
 
-        async function clearLogHistory() {
-            if (!confirm('Are you sure you want to clear all log history? This cannot be undone.')) return;
+        async function clearLogHistory(type) {
+            if (!confirm('Are you sure you want to clear log history for this script? This cannot be undone.')) return;
             try {
-                const response = await fetch('http://localhost:8000/clear-logs', { method: 'POST' });
+                const response = await fetch('http://localhost:8000/clear-logs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type }) });
                 if (!response.ok) throw new Error('Failed to clear logs');
                 await fetchLogs();
-                // No alert here, just refresh logs
             } catch (err) {
-                // Optionally log error to console, but no alert
                 console.error('Failed to clear logs:', err);
             }
         }
+
+        function showSection(section) {
+            document.getElementById('student-activities').style.display = 'none';
+            document.getElementById('teacher-activities').style.display = 'none';
+            document.getElementById('student-assignment').style.display = 'none';
+            document.getElementById('teacher-assignment').style.display = 'none';
+            if (section) document.getElementById(section).style.display = 'flex';
+        }
+
+        // Show student activities by default
+        showSection('student-activities');
 
         // Fetch logs on page load
         document.addEventListener('DOMContentLoaded', fetchLogs);

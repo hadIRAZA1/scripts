@@ -25,6 +25,7 @@ def run_script():
         'student_storygen': 'storygenstd.py',
         'teacher_storygen': 'storygen.py',
         'assignment_combinations': 'assignmentT.py',
+        'student_assignmentstd': 'assignmentstd.py',
     }
     script = script_map.get(script_type)
     if not script:
@@ -37,6 +38,7 @@ def run_script():
 
 @app.route('/clear-logs', methods=['POST'])
 def clear_logs():
+    print("Clear logs endpoint called")  # Add this line
     try:
         open('automation_logs.json', 'w').close()
         return jsonify({'message': 'Logs cleared successfully.'}), 200
