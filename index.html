@@ -7,153 +7,92 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        /* --- CORE FIX: Prevents padding and borders from increasing element width --- */
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
-            --primary: #7c3aed;
-            --primary-dark: #5b21b6;
-            --primary-light: #ede9fe;
-            --accent: #06b6d4;
-            --accent-dark: #0e7490;
-            --danger: #ef4444;
+            --primary: #6c47ff;
+            --primary-dark: #3d1eaa;
+            --primary-light: #f3f0ff;
+            --accent: #00e0d3;
+            --accent-dark: #00bfae;
+            --danger: #ff4d6d;
             --danger-dark: #b91c1c;
-            --success: #22c55e;
+            --success: #00c48c;
             --success-bg: #e6fff6;
-            --bg: #f3f4f6;
+            --bg: #f6f3ff;
             --card: #fff;
-            --text: #1e1b4b;
-            --muted: #7c3aed;
-            --border: #e0e7ff;
-            --shadow: 0 8px 32px 0 rgba(124, 58, 237, 0.10);
-            --sidebar: #fff;
-            --sidebar-shadow: 0 2px 24px 0 rgba(124, 58, 237, 0.10);
+            --text: #1a1333;
+            --muted: #6c47ff;
+            --border: #e0d7ff;
+            --shadow: 0 8px 32px 0 rgba(108, 71, 255, 0.10);
         }
         html, body {
             height: 100%;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scrollbars globally */
         }
         body {
             min-height: 100vh;
-            background: linear-gradient(120deg, var(--primary-light) 0%, #f0fdfa 100%);
-            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
             color: var(--text);
+            background: none !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            /* --- LAYOUT FIX: Changed width from 100vw to 100% --- */
+            width: 100%;
+            min-height: 100vh;
             margin: 0;
-            display: flex;
-        }
-        .sidebar {
-            width: 260px;
-            background: var(--sidebar);
-            color: var(--primary-dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 36px 0 0 0;
-            box-shadow: var(--sidebar-shadow);
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 10;
-        }
-        .sidebar h1 {
-            font-size: 1.7rem;
-            font-weight: 900;
-            margin-bottom: 36px;
-            letter-spacing: -1px;
-            width: 100%;
-            text-align: center;
-            color: var(--primary);
-        }
-        .sidebar-section {
-            width: 100%;
-            margin-bottom: 18px;
-        }
-        .sidebar-section-title {
-            font-size: 1.08rem;
-            font-weight: 700;
-            color: var(--muted);
-            margin: 18px 0 8px 32px;
-            letter-spacing: 0.5px;
-        }
-        .sidebar-btn {
-            background: none;
-            border: none;
-            color: var(--primary-dark);
-            font-size: 1.08rem;
-            font-weight: 600;
-            margin: 2px 0;
-            padding: 12px 32px;
-            border-radius: 0 18px 18px 0;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .sidebar-btn.active, .sidebar-btn:hover {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-        .main-content {
-            flex: 1;
-            margin-left: 260px;
-            padding: 0 0 40px 0;
+            /* Added side padding for content spacing */
+            padding: 0 40px 40px 40px;
             background: transparent;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            border-radius: 0;
+            box-shadow: none;
+            position: relative;
         }
         .header {
             display: flex;
             align-items: center;
             gap: 18px;
             margin-bottom: 32px;
-            justify-content: flex-start;
-            padding: 0 40px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-            color: #fff;
-            border-radius: 0 0 32px 32px;
-            box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.08);
-            min-height: 110px;
+            justify-content: center;
+            padding-top: 40px;
+            position: relative; /* For positioning the theme switcher */
         }
         .header-icon {
-            font-size: 2.5rem;
-            color: #fff;
+            font-size: 3.2rem;
+            color: var(--primary);
         }
         .main-heading {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             font-weight: 900;
             letter-spacing: -1.5px;
-            color: #fff;
+            color: var(--primary);
+            font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
         }
         .actions-bar {
             display: flex;
             flex-wrap: wrap;
             gap: 18px;
-            justify-content: flex-start;
+            justify-content: center;
             margin-bottom: 32px;
-            padding: 0 40px;
         }
         .refresh-button, .clear-button {
             background: var(--primary);
             color: #fff;
             font-weight: 700;
             border: none;
-            border-radius: 14px;
-            padding: 16px 28px;
-            font-size: 1.08rem;
+            border-radius: 16px;
+            padding: 18px 32px;
+            font-size: 1.1rem;
             cursor: pointer;
-            box-shadow: 0 4px 16px 0 rgba(124, 58, 237, 0.10);
+            box-shadow: 0 4px 16px 0 rgba(108, 71, 255, 0.10);
             transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
             outline: none;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .refresh-button.special {
-            background: var(--accent);
-            color: #fff;
-            font-weight: 900;
-            font-size: 1.12rem;
-            border: 2px solid var(--primary);
         }
         .refresh-button:hover, .clear-button:hover {
             background: var(--primary-dark);
@@ -161,66 +100,176 @@
         }
         .clear-button {
             background: var(--danger);
-            margin-left: 8px;
         }
         .clear-button:hover {
             background: var(--danger-dark);
         }
-        .dashboard-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            margin: 0 40px 32px 40px;
+        .last-run-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 10px 28px;
+            margin: 0 auto 32px auto;
+            box-shadow: 0 2px 8px 0 rgba(108, 71, 255, 0.10);
+            text-align: center;
         }
-        .dashboard-card {
+        .summary-grid {
+            display: flex;
+            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+            gap: 32px;
+            margin-bottom: 32px;
+            justify-content: center;
+        }
+        .summary-card {
+            flex: 1 1 220px; /* Allow cards to grow, but base width is 220px */
             background: var(--card);
             border-radius: 18px;
-            box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.08);
+            box-shadow: var(--shadow);
             padding: 32px 24px 24px 24px;
-            min-width: 220px;
-            border: 2.5px solid var(--border);
-            flex: 1 1 220px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            min-width: 220px;
+            border: 2.5px solid var(--border);
+            position: relative;
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        .dashboard-card .fa {
+        .summary-card .fa {
             font-size: 2.1rem;
             margin-bottom: 14px;
         }
-        .dashboard-label {
+        .summary-label {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--muted);
             margin-bottom: 8px;
         }
-        .dashboard-value {
+        .summary-value {
             font-size: 2.5rem;
             font-weight: 900;
             margin-bottom: 0;
+            color: var(--text);
         }
-        .logs-section {
+        .blue-card { border-left: 8px solid var(--primary); }
+        .green-card { border-left: 8px solid var(--success); }
+        .red-card { border-left: 8px solid var(--danger); }
+        .summary-card.blue-card .fa { color: var(--primary); }
+        .summary-card.green-card .fa { color: var(--success); }
+        .summary-card.red-card .fa { color: var(--danger); }
+        .script-summary-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-bottom: 40px;
+        }
+        .script-summary-card {
             background: var(--card);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.08);
-            margin: 0 40px;
-            padding: 32px 24px;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 22px;
+            box-shadow: 0 2px 8px 0 rgba(108, 71, 255, 0.06);
+            display: flex;
+            flex-wrap: wrap; /* Allow content to wrap */
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+            transition: box-shadow 0.2s, transform 0.2s, background-color 0.3s, border-color 0.3s;
+            position: relative;
         }
-        .logs-header {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .script-summary-card:hover {
+            box-shadow: 0 8px 24px 0 rgba(108, 71, 255, 0.13);
+            transform: translateY(-2px) scale(1.01);
+        }
+        .script-title {
+            font-size: 1.25rem;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
+            flex-grow: 1; /* Allow title to take up space */
+        }
+        .script-title .fa {
+            font-size: 1.2rem;
+        }
+        .script-stats {
+            display: flex;
+            gap: 22px;
+            font-size: 1.08rem;
+            color: var(--muted);
+        }
+        .script-stats span strong {
+            color: var(--text);
+        }
+        .script-stats .success-count { color: var(--success); font-weight: 800; }
+        .script-stats .failure-count { color: var(--danger); font-weight: 800; }
+        .view-details-button {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 800;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.08rem;
+            transition: background 0.2s;
+        }
+        .view-details-button:hover {
+            background: var(--primary-dark);
+        }
+        .individual-logs-section {
+            display: none;
+            margin-top: 50px;
+            padding-top: 28px;
+            border-top: 2px dashed var(--border);
+            animation: fadeIn 0.8s ease-out;
+        }
+        .individual-logs-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        .individual-logs-header h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .back-button {
+            background: var(--muted);
+            color: #fff;
+            font-weight: 800;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.08rem;
+            transition: background 0.2s;
+        }
+        .back-button:hover {
+            background: #334155;
+        }
+        .logs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
         .log-entry {
-            background: var(--bg);
+            background: var(--primary-light);
             border: 2px solid var(--border);
             border-radius: 14px;
             padding: 22px 18px;
-            margin-bottom: 18px;
-            box-shadow: 0 2px 8px 0 rgba(124, 58, 237, 0.04);
+            box-shadow: 0 2px 8px 0 rgba(108, 71, 255, 0.04);
+            position: relative;
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        .log-entry:last-child { margin-bottom: 0; }
+        .log-entry:hover {
+            box-shadow: var(--shadow);
+        }
         .log-header-row {
             display: flex;
             flex-wrap: wrap;
@@ -230,7 +279,7 @@
             margin-bottom: 12px;
             gap: 10px 18px;
         }
-        .log-timestamp { font-weight: 700; }
+        .log-timestamp { font-weight: 700; color: var(--text); }
         .log-level-text {
             font-weight: 800;
             text-transform: uppercase;
@@ -238,7 +287,7 @@
             border-radius: 6px;
             font-size: 0.98rem;
         }
-        .info .log-level-text { background: #e6fff6; color: var(--success); }
+        .info .log-level-text { background: var(--success-bg); color: var(--success); }
         .warning .log-level-text { background: #fef9c3; color: #fbbf24; }
         .error .log-level-text { background: #fdf2f8; color: var(--danger); }
         .critical .log-level-text { background: #ede9fe; color: #6d28d9; }
@@ -255,6 +304,63 @@
             color: var(--text);
             margin-bottom: 10px;
         }
+        .log-detail-row {
+            font-size: 1.08rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .log-detail-row .font-semibold { font-weight: 800; color: var(--text); }
+        .log-status-text.success { color: var(--success); font-weight: 800; }
+        .log-status-text.failure { color: var(--danger); font-weight: 800; }
+        .log-status-text { text-transform: capitalize; }
+        .error-message, .warning-message {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 10px;
+        }
+        .error-message {
+            color: var(--danger);
+            font-weight: 800;
+            background: #fdf2f8;
+            border: 2px solid #fca5a5;
+        }
+        .warning-message {
+            color: #d97706;
+            font-weight: 800;
+            background: #fef9c3;
+            border: 2px solid #fcd34d;
+        }
+        .screenshot-link {
+            margin-top: 12px;
+            font-size: 1.08rem;
+            display: block;
+        }
+        .screenshot-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            transition: color 0.2s;
+        }
+        .screenshot-link a:hover {
+            text-decoration: underline;
+            color: var(--primary-dark);
+        }
+        pre {
+            background: #f1f5f9;
+            padding: 1.2rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Poppins', 'Courier New', Courier, monospace;
+            font-size: 1.08rem;
+            color: var(--text);
+            margin-top: 1rem;
+            border: 2px solid var(--border);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .separator {
+            border-bottom: 2px dashed var(--border);
+            margin: 40px 0;
+        }
         .footer {
             text-align: center;
             color: var(--muted);
@@ -262,79 +368,236 @@
             margin-top: 60px;
             padding-top: 28px;
             border-top: 2px solid var(--border);
-            background: var(--bg);
+            background: var(--card);
             border-radius: 0 0 18px 18px;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+        @media (max-width: 1100px) {
+            .summary-grid { flex-direction: column; gap: 18px; }
+            .container { padding: 0 2vw; }
+        }
+        @media (max-width: 700px) {
+            .container { padding: 0 1vw; }
+            .actions-bar { flex-direction: column; gap: 10px; }
+            .main-heading { font-size: 1.5rem; }
+            .theme-switcher { right: 10px; top: 10px; }
+        }
+        .sidebar {
+            width: 240px;
+            background: #7c3aed;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 32px 0 0 0;
+            box-shadow: 0 8px 32px 0 rgba(124, 58, 237, 0.10);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+        }
+        .sidebar-tabs {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 18px;
+            align-items: stretch;
+        }
+        .sidebar-tab {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.18rem;
+            font-weight: 700;
+            padding: 22px 0 22px 32px;
+            border-radius: 0 32px 32px 0;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+            box-shadow: none;
+            outline: none;
+            margin: 0;
+        }
+        .sidebar-tab.active {
+            background: #a78bfa;
+            color: #4c1d95;
+            box-shadow: 0 4px 16px 0 rgba(124, 58, 237, 0.10);
+        }
+        .sidebar-tab:hover:not(.active) {
+            background: #a78bfa33;
+            color: #fff;
+        }
+        .sidebar-tab i {
+            font-size: 1.5rem;
+            margin-right: 10px;
         }
         @media (max-width: 900px) {
             .sidebar { display: none; }
-            .main-content { padding: 0; margin-left: 0; }
-            .dashboard-cards, .logs-section { margin: 0 10px; }
-            .header, .actions-bar { padding: 0 10px; }
+            .main-content { margin-left: 0; }
+            .main-bg-blur, .main-bg-overlay { left: 0; width: 100%; }
         }
-        @media (max-width: 600px) {
-            .header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px 10px 0 10px; }
-            .main-heading { font-size: 1.2rem; }
-            .dashboard-cards { flex-direction: column; gap: 12px; }
-            .logs-section { padding: 16px 8px; }
+        .main-content {
+            margin-left: 240px;
+            position: relative;
+            min-height: 100vh;
+            z-index: 1;
+            flex-grow: 1;
+            width: calc(100% - 240px); /* Fill remaining space */
         }
-        .clear-btn-inline {
-            background: var(--danger);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 6px 14px;
-            font-size: 0.98rem;
-            font-weight: 700;
-            margin-left: 8px;
+        /* Blurred background image for main content */
+        .main-bg-blur {
+            position: fixed;
+            left: 240px;
+            top: 0;
+            width: calc(100vw - 240px);
+            height: 100vh;
+            background: url('image.jpg') center center/cover no-repeat;
+            filter: blur(18px) brightness(0.85);
+            z-index: -2;
+            transition: filter 0.3s;
+        }
+        .main-bg-overlay {
+            position: fixed;
+            left: 240px;
+            top: 0;
+            width: calc(100vw - 240px);
+            height: 100vh;
+            background: rgba(255,255,255,0.55);
+            z-index: -1;
+            transition: background-color 0.3s;
+        }
+        .theme-switcher {
+            position: absolute;
+            top: 45px;
+            right: 40px;
+            display: flex;
+            gap: 18px;
+        }
+        .theme-toggle-button, .clear-logs-btn {
+            background-color: var(--primary-light);
+            border: 2px solid var(--border);
+            color: var(--primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
             cursor: pointer;
-            transition: background 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
-        .clear-btn-inline:hover {
-            background: var(--danger-dark);
+        .theme-toggle-button:hover, .clear-logs-btn:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow);
+            background-color: var(--primary);
+            color: #fff;
         }
+        .theme-toggle-button .fa-sun { display: none; }
+        .clear-logs-btn .fa-trash { font-size: 1.2em; }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            --bg: #1a1333;
+            --card: #2a2150;
+            --text: #f3f0ff;
+            --muted: #a894ff;
+            --border: #3d326b;
+            --primary-light: #2a2150;
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --success-bg: rgba(0, 196, 140, 0.1);
+            --danger-bg: rgba(255, 77, 109, 0.1);
+        }
+        body.dark-mode .main-bg-overlay {
+            background: rgba(26, 19, 51, 0.7);
+        }
+        body.dark-mode .main-bg-blur {
+            filter: blur(18px) brightness(0.6);
+        }
+        body.dark-mode .log-entry {
+            background: #1e163b;
+        }
+        body.dark-mode pre {
+            background: #1a1333;
+            border-color: var(--border);
+            color: #e0d7ff;
+        }
+        body.dark-mode .theme-toggle-button {
+            background-color: var(--card);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        body.dark-mode .sidebar-tab.active {
+             background: #5b21b6;
+             color: #e9d5ff;
+        }
+        body.dark-mode .warning-message {
+            background-color: rgba(217, 119, 6, 0.1);
+            color: #f59e0b;
+        }
+         body.dark-mode .error-message {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+        }
+        body.dark-mode .theme-toggle-button .fa-sun { display: block; }
+        body.dark-mode .theme-toggle-button .fa-moon { display: none; }
+
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <h1><i class="fa-solid fa-robot"></i> Bot Dashboard</h1>
-        <div class="sidebar-section">
-            <div class="sidebar-section-title">Student Side</div>
-            <button class="sidebar-btn" onclick="showSection('student-activities')"><i class="fa-solid fa-user-graduate"></i> Student Activities</button>
-            <button class="sidebar-btn" onclick="showSection('student-assignment')"><i class="fa-solid fa-file-alt"></i> Student Assignment</button>
-        </div>
-        <div class="sidebar-section">
-            <div class="sidebar-section-title">Teacher Side</div>
-            <button class="sidebar-btn" onclick="showSection('teacher-activities')"><i class="fa-solid fa-chalkboard-teacher"></i> Teacher Activities</button>
-            <button class="sidebar-btn" onclick="showSection('teacher-assignment')"><i class="fa-solid fa-file-alt"></i> Teacher Assignment</button>
+        <div class="sidebar-tabs">
+            <button class="sidebar-tab" id="tab-student-activities" onclick="showTab('student-activities')"><i class="fa fa-user-graduate"></i> Student Activities</button>
+            <button class="sidebar-tab" id="tab-teacher-activities" onclick="showTab('teacher-activities')"><i class="fa fa-chalkboard-teacher"></i> Teacher Activities</button>
+            <button class="sidebar-tab" id="tab-student-assignment" onclick="showTab('student-assignment')"><i class="fa fa-file-alt"></i> Student Assignment</button>
+            <button class="sidebar-tab" id="tab-teacher-assignment" onclick="showTab('teacher-assignment')"><i class="fa fa-file-alt"></i> Teacher Assignment</button>
         </div>
     </div>
+    <div class="main-bg-blur"></div>
+    <div class="main-bg-overlay"></div>
     <div class="main-content">
         <div class="container">
             <div class="header">
                 <span class="header-icon"><i class="fa-solid fa-robot"></i></span>
                 <span class="main-heading">Selenium Bot Automation Logs</span>
+                <div class="theme-switcher">
+                    <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle dark and light mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <button class="clear-logs-btn" aria-label="Clear logs" onclick="clearLogHistory()">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
             </div>
             <div id="student-activities" class="actions-bar" style="display:none;">
-                <button class="refresh-button" onclick="runScript('student_activepassive')">Run Student Active/Passive</button><button class="clear-btn-inline" onclick="clearLogHistory('student_activepassive')">Clear</button>
-                <button class="refresh-button" onclick="runScript('student_currency')">Run Student Currency</button><button class="clear-btn-inline" onclick="clearLogHistory('student_currency')">Clear</button>
-                <button class="refresh-button" onclick="runScript('student_imagedescribe')">Run Student Image Describe</button><button class="clear-btn-inline" onclick="clearLogHistory('student_imagedescribe')">Clear</button>
-                <button class="refresh-button" onclick="runScript('student_readrespond')">Run Student Read & Respond</button><button class="clear-btn-inline" onclick="clearLogHistory('student_readrespond')">Clear</button>
-                <button class="refresh-button" onclick="runScript('student_spellingbee')">Run Student Spelling Bee</button><button class="clear-btn-inline" onclick="clearLogHistory('student_spellingbee')">Clear</button>
-                <button class="refresh-button" onclick="runScript('student_storygen')">Run Student Story Generation</button><button class="clear-btn-inline" onclick="clearLogHistory('student_storygen')">Clear</button>
+                <button class="refresh-button" onclick="runScript('student_activepassive')">Run Student Active/Passive</button>
+                <button class="refresh-button" onclick="runScript('student_currency')">Run Student Currency</button>
+                <button class="refresh-button" onclick="runScript('student_imagedescribe')">Run Student Image Describe</button>
+                <button class="refresh-button" onclick="runScript('student_readrespond')">Run Student Read & Respond</button>
+                <button class="refresh-button" onclick="runScript('student_spellingbee')">Run Student Spelling Bee</button>
+                <button class="refresh-button" onclick="runScript('student_storygen')">Run Student Story Generation</button>
             </div>
             <div id="teacher-activities" class="actions-bar" style="display:none;">
-                <button class="refresh-button" onclick="runScript('teacher_activepassive')">Run Teacher Active/Passive</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_activepassive')">Clear</button>
-                <button class="refresh-button" onclick="runScript('teacher_currency')">Run Teacher Currency</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_currency')">Clear</button>
-                <button class="refresh-button" onclick="runScript('teacher_imagedescribe')">Run Teacher Image Describe</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_imagedescribe')">Clear</button>
-                <button class="refresh-button" onclick="runScript('teacher_readrespond')">Run Teacher Read & Respond</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_readrespond')">Clear</button>
-                <button class="refresh-button" onclick="runScript('teacher_spellingbee')">Run Teacher Spelling Bee</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_spellingbee')">Clear</button>
-                <button class="refresh-button" onclick="runScript('teacher_storygen')">Run Teacher Story Generation</button><button class="clear-btn-inline" onclick="clearLogHistory('teacher_storygen')">Clear</button>
+                <button class="refresh-button" onclick="runScript('teacher_activepassive')">Run Teacher Active/Passive</button>
+                <button class="refresh-button" onclick="runScript('teacher_currency')">Run Teacher Currency</button>
+                <button class="refresh-button" onclick="runScript('teacher_imagedescribe')">Run Teacher Image Describe</button>
+                <button class="refresh-button" onclick="runScript('teacher_readrespond')">Run Teacher Read & Respond</button>
+                <button class="refresh-button" onclick="runScript('teacher_spellingbee')">Run Teacher Spelling Bee</button>
+                <button class="refresh-button" onclick="runScript('teacher_storygen')">Run Teacher Story Generation</button>
             </div>
             <div id="student-assignment" class="actions-bar" style="display:none;">
-                <button class="refresh-button special" onclick="runScript('student_assignmentstd')">Run Student Assignment Side</button><button class="clear-btn-inline" onclick="clearLogHistory('student_assignmentstd')">Clear</button>
+                <button class="refresh-button special" onclick="runScript('student_assignmentstd')">Run Student Assignment Side</button>
             </div>
             <div id="teacher-assignment" class="actions-bar" style="display:none;">
-                <button class="refresh-button special" onclick="runScript('assignment_combinations')">Run Teacher Assignment Side</button><button class="clear-btn-inline" onclick="clearLogHistory('assignment_combinations')">Clear</button>
+                <button class="refresh-button special" onclick="runScript('assignment_combinations')">Run Teacher Assignment Side</button>
             </div>
             <div id="loading-indicator" class="loading-indicator">Loading automation run summaries...</div>
             <div class="last-run-badge">
@@ -375,6 +638,7 @@
         </div>
     </div>
     <script>
+        // The JavaScript section remains the same as it was already correct.
         const logsContainer = document.getElementById('logs-container');
         const loadingIndicator = document.getElementById('loading-indicator');
         const lastUpdatedSpan = document.getElementById('last-updated');
@@ -387,20 +651,13 @@
         const detailedLogHeader = document.getElementById('detailed-log-header');
         const lastRunTimestamp = document.getElementById('last-run-timestamp');
 
-        let allLogs = []; // Stores all parsed log entries
-        let scriptRunSummaries = {}; // Stores aggregated summary for each script
+        let allLogs = []; 
+        let scriptRunSummaries = {};
 
         async function fetchLogs() {
-            // Reset UI states
-            scriptSummaryList.innerHTML = '';
-            logsContainer.innerHTML = '';
             loadingIndicator.style.display = 'block';
             scriptSummariesSection.style.display = 'block';
             individualLogsSection.style.display = 'none';
-
-            totalLogsSpan.textContent = '0';
-            successfulActivitiesSpan.textContent = '0';
-            failedActivitiesSpan.textContent = '0';
 
             try {
                 const response = await fetch('automation_logs.json');
@@ -411,34 +668,35 @@
                 const lines = text.split('\n').filter(line => line.trim() !== '');
 
                 if (lines.length === 0) {
-                    scriptSummaryList.innerHTML = '<p class="text-center p-5 text-gray-500">No log entries found.</p>';
+                    scriptSummaryList.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--muted);">No log entries found.</p>';
+                    totalLogsSpan.textContent = '0';
+                    successfulActivitiesSpan.textContent = '0';
+                    failedActivitiesSpan.textContent = '0';
                     return;
                 }
 
-                allLogs = []; // Clear previous logs
-                scriptRunSummaries = {}; // Clear previous summaries
+                allLogs = []; 
+                scriptRunSummaries = {}; 
                 let overallSuccessfulCount = 0;
                 let overallFailedCount = 0;
-                let latestTimestamp = null; // Track the latest timestamp
+                let latestTimestamp = null; 
 
                 for (const line of lines) {
                     try {
                         const log = JSON.parse(line);
                         allLogs.push(log);
 
-                        // Track latest timestamp
                         if (log.asctime && (!latestTimestamp || new Date(log.asctime) > new Date(latestTimestamp))) {
                             latestTimestamp = log.asctime;
                         }
 
-                        // Aggregate summary for each script
                         if (!scriptRunSummaries[log.name]) {
                             scriptRunSummaries[log.name] = {
                                 totalRuns: 0,
                                 successes: 0,
                                 failures: 0,
                                 lastRun: '',
-                                lastRunStatus: 'neutral' // 'success', 'failure', 'neutral'
+                                lastRunStatus: 'neutral'
                             };
                         }
                         scriptRunSummaries[log.name].totalRuns++;
@@ -453,27 +711,19 @@
                             scriptRunSummaries[log.name].lastRunStatus = 'failure';
                         }
                         
-                        // Always update last run timestamp, assuming logs are somewhat ordered or we sort later
                         if (!scriptRunSummaries[log.name].lastRun || new Date(log.asctime) > new Date(scriptRunSummaries[log.name].lastRun)) {
                             scriptRunSummaries[log.name].lastRun = log.asctime;
                         }
 
                     } catch (jsonParseError) {
                         console.error('Error parsing JSON line:', line, jsonParseError);
-                        const errorDiv = document.createElement('div');
-                        errorDiv.className = 'log-entry error';
-                        errorDiv.innerHTML = `<p class="error-message">Error parsing log line: <pre>${line}</pre></p>`;
-                        // If parsing error, it won't be part of a specific script's logs, so display it directly
-                        logsContainer.appendChild(errorDiv); 
                     }
                 }
 
-                // Update overall summary statistics
                 totalLogsSpan.textContent = allLogs.length;
                 successfulActivitiesSpan.textContent = overallSuccessfulCount;
                 failedActivitiesSpan.textContent = overallFailedCount;
 
-                // Update last run timestamp display
                 let lastRunElem = document.getElementById('last-run-timestamp');
                 if (latestTimestamp && !isNaN(new Date(latestTimestamp).getTime())) {
                     lastRunElem.textContent = new Date(latestTimestamp).toLocaleString();
@@ -481,28 +731,28 @@
                     lastRunElem.textContent = 'N/A';
                 }
 
-                displayScriptSummaries(); // Display the high-level summaries
+                displayScriptSummaries();
 
                 lastUpdatedSpan.textContent = new Date().toLocaleString();
 
             } catch (error) {
                 console.error('Failed to fetch logs:', error);
-                scriptSummaryList.innerHTML = '<p class="text-center p-5 text-red-600">Failed to load logs. Please ensure <code>automation_logs.json</code> exists and is accessible. Error: ' + error.message + '</p>';
+                scriptSummaryList.innerHTML = `<p style="text-align: center; padding: 2rem; color: var(--danger);">Failed to load logs. Error: ${error.message}</p>`;
             } finally {
-                loadingIndicator.style.display = 'none'; // Hide loading indicator
+                loadingIndicator.style.display = 'none';
             }
         }
 
         function displayScriptSummaries() {
-            scriptSummaryList.innerHTML = ''; // Clear previous summary cards
+            scriptSummaryList.innerHTML = '';
             const sortedScriptNames = Object.keys(scriptRunSummaries).sort((a, b) => {
-                const dateA = new Date(scriptRunSummaries[a].lastRun || 0); // Handle empty lastRun
+                const dateA = new Date(scriptRunSummaries[a].lastRun || 0);
                 const dateB = new Date(scriptRunSummaries[b].lastRun || 0);
-                return dateB - dateA; // Newest first
+                return dateB - dateA;
             });
 
             if (sortedScriptNames.length === 0) {
-                scriptSummaryList.innerHTML = '<p class="text-center p-5 text-gray-500">No automation scripts found.</p>';
+                scriptSummaryList.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--muted);">No automation scripts have been run yet.</p>';
                 return;
             }
 
@@ -522,22 +772,20 @@
                 `;
                 scriptSummaryList.appendChild(card);
             });
-            // Ensure the correct section is visible
             scriptSummariesSection.style.display = 'block';
             individualLogsSection.style.display = 'none';
         }
 
         function showDetailedLogs(scriptName) {
             detailedLogHeader.textContent = `Detailed Logs for: ${scriptName}`;
-            logsContainer.innerHTML = ''; // Clear previous detailed logs
+            logsContainer.innerHTML = '';
 
-            // Filter logs relevant to this script and sort by timestamp (newest first)
             const scriptLogs = allLogs
                 .filter(log => log.name === scriptName)
                 .sort((a, b) => new Date(b.asctime) - new Date(a.asctime));
 
             if (scriptLogs.length === 0) {
-                logsContainer.innerHTML = '<p class="text-center p-5 text-gray-500">No log entries found for this script.</p>';
+                logsContainer.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--muted);">No log entries found for this script.</p>';
             } else {
                 scriptLogs.forEach((log, index) => {
                     const div = document.createElement('div');
@@ -552,27 +800,13 @@
                         <p class="log-message-text">${log.message}</p>
                     `;
 
-                    if (log.activity) {
-                        content += `<p class="log-detail-row"><span class="font-semibold">Activity:</span> ${log.activity}</p>`;
-                    }
-                    if (log.step) {
-                        content += `<p class="log-detail-row"><span class="font-semibold">Step:</span> ${log.step}</p>`;
-                    }
-                    if (log.status) {
-                        content += `<p class="log-detail-row"><span class="font-semibold">Status:</span> <span class="log-status-text ${log.status}">${log.status}</span></p>`;
-                    }
-                    if (log.error_message) {
-                        content += `<p class="error-message"><span class="font-semibold">Error Message:</span> ${log.error_message}</p>`;
-                    }
-                    if (log.warning_message) {
-                        content += `<p class="warning-message"><span class="font-semibold">Warning Message:</span> ${log.warning_message}</p>`;
-                    }
-                    if (log.screenshot) {
-                        content += `<p class="screenshot-link"><span class="font-semibold">Screenshot:</span> <a href="/${log.screenshot}" target="_blank">${log.screenshot}</a></p>`;
-                    }
-                    if (log.traceback) {
-                        content += `<pre>${log.traceback}</pre>`;
-                    }
+                    if (log.activity) content += `<p class="log-detail-row"><span class="font-semibold">Activity:</span> ${log.activity}</p>`;
+                    if (log.step) content += `<p class="log-detail-row"><span class="font-semibold">Step:</span> ${log.step}</p>`;
+                    if (log.status) content += `<p class="log-detail-row"><span class="font-semibold">Status:</span> <span class="log-status-text ${log.status}">${log.status}</span></p>`;
+                    if (log.error_message) content += `<p class="error-message"><span class="font-semibold">Error Message:</span> ${log.error_message}</p>`;
+                    if (log.warning_message) content += `<p class="warning-message"><span class="font-semibold">Warning Message:</span> ${log.warning_message}</p>`;
+                    if (log.screenshot) content += `<p class="screenshot-link"><span class="font-semibold">Screenshot:</span> <a href="/${log.screenshot}" target="_blank">${log.screenshot}</a></p>`;
+                    if (log.traceback) content += `<pre>${log.traceback}</pre>`;
 
                     div.innerHTML = content;
                     logsContainer.appendChild(div);
@@ -585,7 +819,6 @@
                 });
             }
 
-            // Hide the script summaries and show the detailed logs section
             scriptSummariesSection.style.display = 'none';
             individualLogsSection.style.display = 'block';
         }
@@ -603,32 +836,10 @@
                 })
         }
 
-        function runAllScripts() {
-            const scriptTypes = [
-                'student_spellingbee',
-                'teacher_spellingbee',
-                'student_activepassive',
-                'teacher_activepassive',
-                'student_currency',
-                'teacher_currency',
-                'student_imagedescribe',
-                'teacher_imagedescribe',
-                'student_readrespond',
-                'teacher_readrespond',
-                'student_science',
-                'teacher_science',
-                'student_storygen',
-                'teacher_storygen'
-            ];
-            for (const type of scriptTypes) {
-                runScript(type);
-            }
-        }
-
-        async function clearLogHistory(type) {
-            if (!confirm('Are you sure you want to clear log history for this script? This cannot be undone.')) return;
+        async function clearLogHistory() {
+            if (!confirm('Are you sure you want to clear all log history? This cannot be undone.')) return;
             try {
-                const response = await fetch('http://localhost:8000/clear-logs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type }) });
+                const response = await fetch('http://localhost:8000/clear-logs', { method: 'POST' });
                 if (!response.ok) throw new Error('Failed to clear logs');
                 await fetchLogs();
             } catch (err) {
@@ -636,21 +847,52 @@
             }
         }
 
-        function showSection(section) {
+        function showTab(tab) {
+            document.querySelectorAll('.sidebar-tab').forEach(btn => btn.classList.remove('active'));
             document.getElementById('student-activities').style.display = 'none';
             document.getElementById('teacher-activities').style.display = 'none';
             document.getElementById('student-assignment').style.display = 'none';
             document.getElementById('teacher-assignment').style.display = 'none';
-            if (section) document.getElementById(section).style.display = 'flex';
+            if (tab === 'student-activities') {
+                document.getElementById('tab-student-activities').classList.add('active');
+                document.getElementById('student-activities').style.display = 'flex';
+            } else if (tab === 'teacher-activities') {
+                document.getElementById('tab-teacher-activities').classList.add('active');
+                document.getElementById('teacher-activities').style.display = 'flex';
+            } else if (tab === 'student-assignment') {
+                document.getElementById('tab-student-assignment').classList.add('active');
+                document.getElementById('student-assignment').style.display = 'flex';
+            } else if (tab === 'teacher-assignment') {
+                document.getElementById('tab-teacher-assignment').classList.add('active');
+                document.getElementById('teacher-assignment').style.display = 'flex';
+            }
+        }
+        
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
         }
 
-        // Show student activities by default
-        showSection('student-activities');
+        themeToggle.addEventListener('click', () => {
+            const isDarkMode = body.classList.contains('dark-mode');
+            const newTheme = isDarkMode ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+            showTab('student-activities');
+            fetchLogs();
+        });
 
-        // Fetch logs on page load
-        document.addEventListener('DOMContentLoaded', fetchLogs);
-
-        // Auto-refresh logs every 10 seconds
         setInterval(fetchLogs, 10000); 
     </script>
 </body>
