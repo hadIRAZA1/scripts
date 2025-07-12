@@ -26,6 +26,9 @@ def run_script():
         'teacher_storygen': 'storygen.py',
         'assignment_combinations': 'assignmentT.py',
         'student_assignmentstd': 'assignmentstd.py',
+        # Added for navigation tab testing
+        'teacher_visittabs': 'visittabs.py',
+        'student_visittabs': 'stdvisittabs.py',
     }
     script = script_map.get(script_type)
     if not script:
